@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="alertcontent">This News Application implemented with all best practices like MVVM Architecture, Navigation Architecture, Pagination, Room Database, Shared Preferences, View Recycling ,Coroutines ,Neworking(Retrofit) and many more.</string>
+</resources>
