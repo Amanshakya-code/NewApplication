@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_breaking_news.*
 import kotlinx.android.synthetic.main.fragment_saved_news.*
 
 class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
+    //dnnewin
 
     lateinit var viewModel: NewsViewModel
     lateinit var savedAdapter: SavedAdapter
