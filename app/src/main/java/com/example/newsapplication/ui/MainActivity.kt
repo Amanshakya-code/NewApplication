@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +22,7 @@ import com.example.newsapplication.util.Constants.Companion.COUNTRY_CODE
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.alert_dialog.*
+import kotlinx.android.synthetic.main.fragment_breaking_news.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -119,5 +121,4 @@ class MainActivity : AppCompatActivity() {
         val sp = getSharedPreferences("mypref", Context.MODE_PRIVATE)
         return sp.getString(key,"invalid")
     }
-
 }

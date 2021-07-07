@@ -18,4 +18,7 @@ class NewsRepository(
     fun getSavedNews() = db.getArticleDao().getAllArticles()
 
     suspend fun deleteArticle(article: ArticlesItem) = db.getArticleDao().deleteArticle(article)
+
+    suspend fun getCategoryNews(countryCode: String,category:String,pageNumber:Int) =
+        RetrofitInstance.api.getCategoryNews(countryCode,category,pageNumber)
 }

@@ -23,11 +23,11 @@ import java.io.IOException
 
 class NewsViewModel(app:Application,val newsRepository: NewsRepository):AndroidViewModel(app){
 
-    val breakingNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
+    var breakingNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var breakingNewsPage = 1
     var breakingNewsResponse: NewsResponse?= null
 
-    val searchNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
+    var searchNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var searchNewsPage = 1
     var searchNewsResponse: NewsResponse?=null
 
@@ -41,6 +41,25 @@ class NewsViewModel(app:Application,val newsRepository: NewsRepository):AndroidV
 
     fun searchNews(searchQuery:String) = viewModelScope.launch {
         safeSearchNewsCall(searchQuery)
+    }
+    fun getCategoryNews(CountryCode:String,category:String) = viewModelScope.launch {
+        breakingNews.postValue(Resource.Loading())
+        try {
+            if(hasInternetConnection()) {
+                val response = newsRepository.getCategoryNews(countryCode = CountryCode, category,breakingNewsPage)
+                Log.d("aman","viewnmodel --> ${response.body()?.articles}")
+                breakingNews.postValue(handleBreakingNewsResponse(response))
+            }else{
+                breakingNews.postValue(Resource.Error("No internet Connection"))
+            }
+        }
+        catch (t:Throwable){
+            when(t){
+                is IOException -> breakingNews.postValue(Resource.Error("Network Failure"))
+                else -> breakingNews.postValue(Resource.Error("Conversion Error"))
+            }
+
+        }
     }
 
     private fun handleBreakingNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse> {

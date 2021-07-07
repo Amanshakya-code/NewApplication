@@ -15,6 +15,7 @@ import com.example.newsapplication.adapters.SavedAdapter
 import com.example.newsapplication.ui.MainActivity
 import com.example.newsapplication.ui.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
 import kotlinx.android.synthetic.main.fragment_saved_news.*
 
@@ -23,6 +24,11 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
 
     lateinit var viewModel: NewsViewModel
     lateinit var savedAdapter: SavedAdapter
+    override fun onStart() {
+        super.onStart()
+        (activity as MainActivity).header.visibility = View.GONE
+        (activity as MainActivity).bottomNavigationView.visibility = View.VISIBLE
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
