@@ -2,6 +2,7 @@ package com.example.newsapplication.ui
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -120,5 +121,24 @@ class MainActivity : AppCompatActivity() {
     private fun update(key:String): String? {
         val sp = getSharedPreferences("mypref", Context.MODE_PRIVATE)
         return sp.getString(key,"invalid")
+    }
+     fun SaveIntoSharePref(key:String,value:Boolean,code:String,codeKey:String){
+        val sharedPreferences = getSharedPreferences("mypref",Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply{
+            putBoolean(key,value)
+            putString(codeKey,code)
+            apply()
+        }
+    }
+     fun updatechip(key:String):Boolean{
+        val sp = getSharedPreferences("mypref",Context.MODE_PRIVATE)
+        return sp.getBoolean(key,false)
+    }
+    fun cleardata() {
+        var prefs: SharedPreferences = getSharedPreferences("mypref",Context.MODE_PRIVATE) // here you get your prefrences by either of two methods
+        val editor= prefs.edit()
+        editor.clear()
+        editor.commit()
     }
 }

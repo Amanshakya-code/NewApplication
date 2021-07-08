@@ -10,4 +10,8 @@
     <color name="darkYellow">#ffc13f</color>
     <color name="category">#d8bbff</color>
     <color name="red_400">#EF5350</color>
+    <color name="grey">#ACACAC</color>
+    <color name="lightgrey">#CACACA</color>
+    <color name="darkgrey">#2E2E2E</color>
+    <color name="darkback">#80000000</color>
 </resources>

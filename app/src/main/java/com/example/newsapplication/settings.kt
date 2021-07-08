@@ -11,7 +11,7 @@ class settings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        america.isChecked = update("america")
+        /*america.isChecked = update("america")
         india.isChecked = update("india")
         russia.isChecked = update("russia")
         france.isChecked = update("france")
@@ -48,7 +48,7 @@ class settings : AppCompatActivity() {
         }
         southKorea.setOnCheckedChangeListener{ buttonView,isChecked->
             SaveIntoSharePref("southkorea",isChecked,"kr","korea")
-        }
+        }*/
 
     }
     private fun SaveIntoSharePref(key:String,value:Boolean,code:String,codeKey:String){

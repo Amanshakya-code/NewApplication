@@ -2,20 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@drawable/bottomdrawablesheetlayout">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Filter"
-        android:layout_marginBottom="20dp"
-        android:textSize="20sp"
-        android:fontFamily="@font/roboto_medium"
-        android:textStyle="bold"
-        android:layout_marginLeft="10dp"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:text="Filter"
+            android:layout_marginBottom="20dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_medium"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            />
+
+        <ImageView
+            android:id="@+id/crossButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_close_24"/>
+    </LinearLayout>
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -491,80 +504,108 @@
 
         </LinearLayout>
     </HorizontalScrollView>
-    <RadioGroup
-        android:id="@+id/radio_group"
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:padding="15dp">
-
+        android:layout_height="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/grey" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/title"
-            android:padding="10dp"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="3"
             android:layout_height="wrap_content"
             android:text="Select Country Specific News"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textSize="20sp"/>
+            android:layout_marginBottom="10dp"
+            android:gravity="left"
+            android:layout_marginLeft="10dp"/>
+       <Button
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="40dp"
+           android:id="@+id/apply"
+           android:text="Get"
+           android:background="@drawable/rounded"
+           />
+    </LinearLayout>
 
-        <RadioButton
+
+    <com.google.android.material.chip.ChipGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:singleSelection="true"
+        android:id="@+id/chipgroup">
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/CustomChipStyle"
             android:id="@+id/america"
-            android:textSize="18sp"
+            android:text="America"
+            />
+        <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="America" />
-
-        <RadioButton
-            android:id="@+id/india"
-            android:textSize="18sp"
+            style="@style/CustomChipStyle"
+            android:id="@+id/India"
+            android:text="India"
+            />
+        <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="India" />
-
-        <RadioButton
+            style="@style/CustomChipStyle"
             android:id="@+id/russia"
-            android:textSize="18sp"
+            android:text="Russia"
+            />
+        <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Russia" />
-
-        <RadioButton
+            style="@style/CustomChipStyle"
             android:id="@+id/france"
-            android:textSize="18sp"
+            android:text="France"
+            />
+        <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="France" />
-        <RadioButton
-            android:id="@+id/brazil"
-            android:textSize="18sp"
+            style="@style/CustomChipStyle"
+            android:id="@+id/Brazil"
+            android:text="Brazil"
+            />
+        <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Brazil" />
-        <RadioButton
+            style="@style/CustomChipStyle"
             android:id="@+id/japan"
-            android:textSize="18sp"
+            android:text="Japan"
+            />
+        <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Japan" />
-        <RadioButton
+            style="@style/CustomChipStyle"
             android:id="@+id/germany"
-            android:textSize="18sp"
+            android:text="Germany"
+            />
+        <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Germany" />
-        <RadioButton
+            style="@style/CustomChipStyle"
             android:id="@+id/canada"
-            android:textSize="18sp"
+            android:text="Canada"
+            />
+        <com.google.android.material.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Canada" />
-        <RadioButton
-            android:id="@+id/southKorea"
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="South Korea" />
+            style="@style/CustomChipStyle"
+            android:id="@+id/southkorea"
+            android:text="South Korea"
+            />
+    </com.google.android.material.chip.ChipGroup>
 
-    </RadioGroup>
+
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.newsapplication.ui.fragments
 
 import android.app.Dialog
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -10,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.AbsListView
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -25,8 +28,11 @@ import com.example.newsapplication.util.Constants.Companion.COUNTRY_CODE
 import com.example.newsapplication.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.newsapplication.util.Resource
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.bottomsheet.*
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
+
 
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     lateinit var viewModel: NewsViewModel
@@ -60,49 +66,168 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             val card6 = dialog.findViewById<MaterialCardView>(R.id.card6)
             val card7 = dialog.findViewById<MaterialCardView>(R.id.card7)
             val card8 = dialog.findViewById<MaterialCardView>(R.id.card8)
+            val crossbutton = dialog.findViewById<ImageView>(R.id.crossButton)
+            val america = dialog.findViewById<Chip>(R.id.america)
+            val india = dialog.findViewById<Chip>(R.id.India)
+            val russia = dialog.findViewById<Chip>(R.id.russia)
+            val france = dialog.findViewById<Chip>(R.id.france)
+            val brazil = dialog.findViewById<Chip>(R.id.Brazil)
+            val japan = dialog.findViewById<Chip>(R.id.japan)
+            val germany = dialog.findViewById<Chip>(R.id.germany)
+            val canada = dialog.findViewById<Chip>(R.id.canada)
+            val southkorea = dialog.findViewById<Chip>(R.id.southkorea)
+            val apply = dialog.findViewById<Button>(R.id.apply)
+            try {
+                america.isChecked = (activity as MainActivity).updatechip("america")
+                india.isChecked = (activity as MainActivity).updatechip("india")
+                russia.isChecked = (activity as MainActivity).updatechip("russia")
+                france.isChecked = (activity as MainActivity).updatechip("france")
+                brazil.isChecked = (activity as MainActivity).updatechip("brazil")
+                japan.isChecked = (activity as MainActivity).updatechip("brazil")
+                germany.isChecked = (activity as MainActivity).updatechip("germany")
+                canada.isChecked = (activity as MainActivity).updatechip("canada")
+                southkorea.isChecked = (activity as MainActivity).updatechip("southkorea")
+            }catch (e:Exception){
+
+            }
+            apply.setOnClickListener {
+                (activity as MainActivity).cleardata()
+                showmainprogressbar()
+                if(america.isChecked)
+                {
+                    viewModel.breakingNewsResponse = null
+                    viewModel.breakingNewsPage = 1
+                    viewModel.getBreakingNews("us")
+                    (activity as MainActivity).SaveIntoSharePref("america",america.isChecked,"us","ameri")
+                    Toast.makeText(requireContext(),"America",Toast.LENGTH_SHORT).show()
+                }
+                else if(india.isChecked)
+                {
+                    viewModel.breakingNewsResponse = null
+                    viewModel.breakingNewsPage = 1
+                    viewModel.getBreakingNews("in")
+                    (activity as MainActivity).SaveIntoSharePref("india",india.isChecked,"in","ind")
+                    Toast.makeText(requireContext(),"India",Toast.LENGTH_SHORT).show()
+                }
+                else if(russia.isChecked)
+                {
+                    viewModel.breakingNewsResponse = null
+                    viewModel.breakingNewsPage = 1
+                    viewModel.getBreakingNews("ru")
+                    (activity as MainActivity).SaveIntoSharePref("russia",russia.isChecked,"ru","rus")
+                    Toast.makeText(requireContext(),"Russia",Toast.LENGTH_SHORT).show()
+                }
+                else if(france.isChecked)
+                {
+                    viewModel.breakingNewsResponse = null
+                    viewModel.breakingNewsPage = 1
+                    viewModel.getBreakingNews("fr")
+                    (activity as MainActivity).SaveIntoSharePref("france",france.isChecked,"fr","fran")
+                    Toast.makeText(requireContext(),"France",Toast.LENGTH_SHORT).show()
+                }
+                else if(brazil.isChecked)
+                {
+                    viewModel.breakingNewsResponse = null
+                    viewModel.breakingNewsPage = 1
+                    viewModel.getBreakingNews("br")
+                    (activity as MainActivity).SaveIntoSharePref("brazil",brazil.isChecked,"br","braz")
+                    Toast.makeText(requireContext(),"Brazil",Toast.LENGTH_SHORT).show()
+                }
+                else if(japan.isChecked){
+                    viewModel.breakingNewsResponse = null
+                    viewModel.breakingNewsPage = 1
+                    viewModel.getBreakingNews("jp")
+                    (activity as MainActivity).SaveIntoSharePref("japan",japan.isChecked,"jp","jap")
+                    Toast.makeText(requireContext(),"Japan",Toast.LENGTH_SHORT).show()
+                }
+                else if(germany.isChecked)
+                {
+                    viewModel.breakingNewsResponse = null
+                    viewModel.breakingNewsPage = 1
+                    viewModel.getBreakingNews("de")
+                    (activity as MainActivity).SaveIntoSharePref("germany",germany.isChecked,"de","ger")
+                    Toast.makeText(requireContext(),"Germany",Toast.LENGTH_SHORT).show()
+                }
+                else if(canada.isChecked)
+                {
+                    viewModel.breakingNewsResponse = null
+                    viewModel.breakingNewsPage = 1
+                    viewModel.getBreakingNews("ca")
+                    (activity as MainActivity).SaveIntoSharePref("canada",canada.isChecked,"ca","can")
+                    Toast.makeText(requireContext(),"Canada",Toast.LENGTH_SHORT).show()
+                }
+                else if(southkorea.isChecked)
+                {
+                    viewModel.breakingNewsResponse = null
+                    viewModel.breakingNewsPage = 1
+                    viewModel.getBreakingNews("kr")
+                    (activity as MainActivity).SaveIntoSharePref("southkorea",southkorea.isChecked,"kr","korea")
+                    Toast.makeText(requireContext(),"South Korea",Toast.LENGTH_SHORT).show()
+                }
+                else
+                {
+                    viewModel.breakingNewsResponse = null
+                    viewModel.breakingNewsPage = 1
+                    viewModel.getBreakingNews("in")
+                    (activity as MainActivity).SaveIntoSharePref("india",india.isChecked,"in","ind")
+                }
+                dialog.dismiss()
+            }
+
+            crossbutton.setOnClickListener {
+                dialog.dismiss()
+            }
             card1.setOnClickListener {
+                showmainprogressbar()
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"business")
                 dialog.dismiss()
             }
             card2.setOnClickListener {
+                showmainprogressbar()
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"entertainment")
                 dialog.dismiss()
             }
             card3.setOnClickListener {
+                showmainprogressbar()
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"general")
                 dialog.dismiss()
             }
             card4.setOnClickListener {
+                showmainprogressbar()
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"health")
                 dialog.dismiss()
             }
             card5.setOnClickListener {
+                showmainprogressbar()
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"science")
                 dialog.dismiss()
             }
             card6.setOnClickListener {
+                showmainprogressbar()
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"sports")
                 dialog.dismiss()
             }
             card7.setOnClickListener {
+                showmainprogressbar()
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"technology")
                 dialog.dismiss()
             }
             card8.setOnClickListener {
+                showmainprogressbar()
                 viewModel.breakingNewsResponse = null;
                 viewModel.breakingNewsPage = 1
                 viewModel.getBreakingNews(countryCode = COUNTRY_CODE)
@@ -120,6 +245,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response->
             when(response){
                 is Resource.Success ->{
+                    hidemainprogressbar()
                     hideShimmer()
                     hideProgressBar()
                     response.data?.let { newsResponse ->
@@ -136,12 +262,13 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 }
                 is Resource.Error ->{
                     hideProgressBar()
+                    hideShimmer()
+                    hidemainprogressbar()
                     response.message?.let {
                         Toast.makeText(activity,"You have requested too many results. Developer accounts are limited to a max of 100 results",Toast.LENGTH_LONG).show()
                     }
                 }
                 is Resource.Loading ->{
-                    showShimmer()
                     showProgressBar()
                 }
             }
@@ -177,6 +304,14 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         }
     }
 
+    private fun hidemainprogressbar(){
+        progressBar.visibility = View.GONE
+        loadingBack.visibility = View.GONE
+    }
+    private fun showmainprogressbar(){
+        progressBar.visibility = View.VISIBLE
+        loadingBack.visibility = View.VISIBLE
+    }
     private fun hideProgressBar(){
         paginationProgressBar.visibility = View.INVISIBLE
         isLoading = false
@@ -201,6 +336,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     private fun showShimmer() {
         shimmer.startShimmer()
     }
+
 
 
 }
