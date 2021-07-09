@@ -9,5 +9,8 @@
         android:left="10dp"
         android:right="10dp"
         android:top="10dp"/>
+    <gradient android:startColor="#FBF6EA"
+        android:endColor="#FFDA64"
+        android:angle="270" />
 
 </shape>

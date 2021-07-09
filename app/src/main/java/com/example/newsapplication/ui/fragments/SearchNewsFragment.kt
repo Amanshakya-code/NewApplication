@@ -18,7 +18,6 @@ import com.example.newsapplication.util.Constants
 import com.example.newsapplication.util.Resource
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_breaking_news.*
-import kotlinx.android.synthetic.main.fragment_breaking_news.paginationProgressBar
 import kotlinx.android.synthetic.main.fragment_search_news.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
@@ -35,6 +34,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).window.statusBarColor = resources.getColor(R.color.white, (activity as MainActivity).theme)
         viewModel = (activity as MainActivity).viewModel
         setupRecycleView()
 
@@ -75,7 +75,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
         viewModel.searchNews.observe(viewLifecycleOwner, Observer { response->
             when(response){
                 is Resource.Success ->{
-                    hideProgressBar()
+                    hideMainProgressBar()
                     hideshim()
                     response.data?.let { newsResponse ->
                         if(newsResponse.articles?.toList()!!.isEmpty()){
@@ -93,14 +93,14 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
                 }
                 is Resource.Error ->{
                     hideshim()
-                    hideProgressBar()
+                    hideMainProgressBar()
                     searchIllustration.visibility = View.VISIBLE
                     response.message?.let {
                         Toast.makeText(activity,"You have requested too many results. Developer accounts are limited to a max of 100 results.", Toast.LENGTH_LONG).show()
                     }
                 }
                 is Resource.Loading ->{
-                    showProgressBar()
+                    showMainProgressbar()
                 }
             }
         })
@@ -133,14 +133,6 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
             }
         }
     }
-    private fun hideProgressBar(){
-        paginationProgressBar.visibility = View.INVISIBLE
-        isLoading = false
-    }
-    private fun showProgressBar(){
-        paginationProgressBar.visibility = View.VISIBLE
-        isLoading = true
-    }
     private fun setupRecycleView(){
         newsAdapter = NewsAdapter()
         rvSearchNews.apply {
@@ -157,5 +149,13 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
     private fun showshim() {
         shim.visibility = View.VISIBLE
         shim.startShimmer()
+    }
+    private fun showMainProgressbar(){
+        searchprogressbar.visibility = View.VISIBLE
+        loadbalcksearch.visibility = View.VISIBLE
+    }
+    private fun hideMainProgressBar(){
+        searchprogressbar.visibility = View.GONE
+        loadbalcksearch.visibility = View.GONE
     }
 }

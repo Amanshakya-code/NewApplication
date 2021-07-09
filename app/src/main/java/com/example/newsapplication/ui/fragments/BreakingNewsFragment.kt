@@ -44,6 +44,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).window.statusBarColor = resources.getColor(R.color.darkYellow, (activity as MainActivity).theme)
         viewModel = (activity as MainActivity).viewModel
         setupRecycleView()
 
@@ -255,7 +256,6 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 is Resource.Success ->{
                     hidemainprogressbar()
                     hideShimmer()
-                    hideProgressBar()
                     response.data?.let { newsResponse ->
                         Log.d("aman","livedata --> ${newsResponse.articles}")
                         newsAdapter.differ.submitList(newsResponse.articles?.toList())//error for pagination
@@ -269,7 +269,6 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     }
                 }
                 is Resource.Error ->{
-                    hideProgressBar()
                     hideShimmer()
                     hidemainprogressbar()
                     response.message?.let {
@@ -277,7 +276,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     }
                 }
                 is Resource.Loading ->{
-                    showProgressBar()
+                    showShimmer()
                 }
             }
         })
@@ -299,6 +298,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             val isTotalMoreThanVisible = totalItemCount>= QUERY_PAGE_SIZE
             val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning && isTotalMoreThanVisible && isScrolling
             if(shouldPaginate){
+                showmainprogressbar()
                 viewModel.getBreakingNews(COUNTRY_CODE)
                 isScrolling = false
             }
@@ -319,14 +319,6 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     private fun showmainprogressbar(){
         progressBar.visibility = View.VISIBLE
         loadingBack.visibility = View.VISIBLE
-    }
-    private fun hideProgressBar(){
-        paginationProgressBar.visibility = View.INVISIBLE
-        isLoading = false
-    }
-    private fun showProgressBar(){
-        paginationProgressBar.visibility = View.VISIBLE
-        isLoading = true
     }
     private fun setupRecycleView(){
         newsAdapter = NewsAdapter()

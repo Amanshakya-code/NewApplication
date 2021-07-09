@@ -25,16 +25,23 @@
     </FrameLayout>
 
    <com.google.android.material.bottomnavigation.BottomNavigationView
-       app:itemIconTint="@color/nav_color"
+       app:itemIconTint="@drawable/item_selector"
        app:itemTextColor="@color/nav_color"
        android:id="@+id/bottomnavigationgraph"
        android:layout_width="match_parent"
-       android:layout_height="56dp"
+       android:layout_height="40dp"
+       android:layout_marginRight="10dp"
+       android:layout_marginLeft="10dp"
        app:menu="@menu/bottom_navigation_menu"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintHorizontal_bias="0.5"
+       android:elevation="2dp"
+       android:background="@drawable/bottomnavigationbarcustom"
        app:layout_constraintStart_toStartOf="parent"
+       app:labelVisibilityMode="unlabeled"
+       app:itemIconSize="30dp"
+       app:itemRippleColor="@android:color/transparent"
 
        />
 

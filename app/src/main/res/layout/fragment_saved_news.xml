@@ -8,7 +8,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/svebackground"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:background="@drawable/searchbackground"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="-16dp" />
+
         <ImageView
             android:id="@+id/savedImage"
             android:layout_width="200dp"
@@ -28,116 +37,132 @@
             android:layout_marginTop="10dp"
             app:layout_constraintRight_toRightOf="parent"
             />
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/savedImage">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/savedSearch"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="19"
+                android:background="@color/text_box_color_2"
+                android:backgroundTint="@color/text_box_color_2"
+                android:drawableStart="@drawable/ic_baseline_searchbar"
+                android:drawablePadding="10dp"
+                android:hint="Search for Saved News"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingVertical="10dp"
+                android:paddingStart="20dp"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/cleartextsaved"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/ic_baseline_close_24"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/nothavingsavedarticle"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_bookmark_illustration"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            app:layout_constraintVertical_bias="0.189"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/nonewsaved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="No Saved News"
+            android:textSize="25sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nothavingsavedarticle" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/exploreNews"
+            android:layout_width="wrap_content"
+            android:layout_height="57dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:elevation="5dp"
+            android:fontFamily="@font/roboto_medium"
+            android:letterSpacing="0.08"
+            android:text="Explore News"
+            android:textAllCaps="false"
+            android:textColor="#6c63ff"
+            android:textSize="15sp"
+            android:visibility="gone"
+            app:backgroundTint="@color/white"
+            app:cornerRadius="3dp"
+            app:elevation="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nonewsaved"
+            app:strokeColor="#6c63ff"
+            app:strokeWidth="1.5dp" />
+
+        <FrameLayout
+            android:id="@+id/savedprogressfram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSavedNews"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                tools:listitem="@layout/item_article_preview" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/loadblacksaved"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/darkback"
+                app:cardElevation="0dp" >
+
+                <ProgressBar
+                    android:id="@+id/savedprogressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:indeterminateTint="@color/white"
+                    android:visibility="gone" />
+            </androidx.cardview.widget.CardView>
+
+        </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/savedSearch"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginHorizontal="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_weight="19"
-            android:background="@color/text_box_color_2"
-            android:backgroundTint="@color/text_box_color_2"
-            android:drawableStart="@drawable/ic_baseline_searchbar"
-            android:drawablePadding="10dp"
-            android:hint="Search for Saved News"
-            android:imeOptions="actionSearch"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingVertical="10dp"
-            android:paddingStart="20dp"
-            android:textCursorDrawable="@null"
-            android:textSize="15sp" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/cleartextsaved"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="30dp"
-            android:src="@drawable/ic_baseline_close_24"
-            android:visibility="gone" />
-
-    </FrameLayout>
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/nothavingsavedarticle"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_gravity="top"
-        android:layout_marginBottom="10dp"
-        android:scaleType="fitXY"
-        android:visibility="gone"
-        android:src="@drawable/ic_bookmark_illustration" />
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/nonewsaved"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
-        android:fontFamily="@font/roboto_medium"
-        android:text="No Saved News"
-        android:textSize="25sp" />
-
-    <com.google.android.material.button.MaterialButton
-        android:visibility="gone"
-        android:id="@+id/exploreNews"
-        android:layout_width="wrap_content"
-        android:layout_height="57dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:elevation="5dp"
-        android:fontFamily="@font/roboto_medium"
-        android:letterSpacing="0.08"
-        android:text="Explore News"
-        android:textAllCaps="false"
-        android:textColor="#6c63ff"
-        android:textSize="15sp"
-        app:backgroundTint="@color/white"
-        app:cornerRadius="3dp"
-        app:elevation="5dp"
-        app:strokeColor="#6c63ff"
-        app:strokeWidth="1.5dp" />
-
-    <FrameLayout
-        android:id="@+id/savedprogressfram"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSavedNews"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_article_preview" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/loadblacksaved"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="true"
-            android:focusable="true"
-            android:visibility="gone"
-            app:cardBackgroundColor="@color/darkback"
-            app:cardElevation="0dp" />
-
-        <ProgressBar
-            android:id="@+id/savedprogressbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:indeterminateTint="@color/white"
-            android:visibility="gone" />
-
-    </FrameLayout>
 </LinearLayout>

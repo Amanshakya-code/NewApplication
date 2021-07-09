@@ -41,7 +41,7 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity as MainActivity).window.statusBarColor = resources.getColor(R.color.light_blue, (activity as MainActivity).theme)
         savedarticleList = ArrayList()
         tempsavedList = ArrayList()
 
