@@ -21,4 +21,6 @@ class NewsRepository(
 
     suspend fun getCategoryNews(countryCode: String,category:String,pageNumber:Int) =
         RetrofitInstance.api.getCategoryNews(countryCode,category,pageNumber)
+
+    suspend fun DeleteAllArticle() = db.getArticleDao().deleteAllArticle()
 }

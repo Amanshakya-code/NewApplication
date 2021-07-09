@@ -80,6 +80,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
     //facebook shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
-    //bubble nav bottom
-    implementation 'com.gauravk.bubblenavigation:bubblenavigation:1.0.7'
+    // search bar
+    implementation 'com.eldersoss:elderssearchview:1.0.0'
+
+
 }

@@ -2,11 +2,11 @@
 <resources>
     <color name="colorPrimary">#E30528</color>
     <color name="colorPrimaryDark">#E43535</color>
-    <color name="colorAccent">#E81345</color>
+    <color name="colorAccent">#FF4B5C</color>
     <color name="white">#FFF</color>
     <color name="black">#000000</color>
     <color name="red">#EA4335</color>
-    <color name="light_blue">#4285F4</color>
+    <color name="light_blue">#2D9CDB</color>
     <color name="darkYellow">#ffc13f</color>
     <color name="category">#d8bbff</color>
     <color name="red_400">#EF5350</color>
@@ -14,4 +14,5 @@
     <color name="lightgrey">#CACACA</color>
     <color name="darkgrey">#2E2E2E</color>
     <color name="darkback">#80000000</color>
+    <color name="text_box_color_2">#F2F2F2</color>
 </resources>

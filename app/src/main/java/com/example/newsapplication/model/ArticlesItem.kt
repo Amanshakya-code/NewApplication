@@ -15,5 +15,6 @@ data class ArticlesItem(
     val source: Source?,
     val title: String?,
     val url: String,
-    val content: String?
+    val content: String?,
+    var isExpanded:Boolean = false
 ): Serializable

@@ -31,8 +31,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
     val  TAG = "searchNewsFragment"
     override fun onStart() {
         super.onStart()
-        (activity as MainActivity).header.visibility = View.GONE
-        (activity as MainActivity).bottomNavigationView.visibility = View.VISIBLE
+        (activity as MainActivity).bottomnavigationgraph.visibility = View.VISIBLE
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,13 +55,21 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
                 editable?.let {
                     if(editable.toString().isNotEmpty())
                     {
+                        clearText.visibility = View.VISIBLE
+                        searchIllustration.visibility = View.GONE
                         showshim()
                         viewModel.searchNewsResponse = null
                         viewModel.searchNewsPage = 1
                         viewModel.searchNews(editable.toString())
                     }
+                    else{
+                        clearText.visibility = View.GONE
+                    }
                 }
             }
+        }
+        clearText.setOnClickListener {
+            etSearch.text!!.clear()
         }
 
         viewModel.searchNews.observe(viewLifecycleOwner, Observer { response->
@@ -71,6 +78,9 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
                     hideProgressBar()
                     hideshim()
                     response.data?.let { newsResponse ->
+                        if(newsResponse.articles?.toList()!!.isEmpty()){
+                            searchIllustration.visibility = View.GONE
+                        }
                         newsAdapter.differ.submitList(newsResponse.articles?.toList())
                         val totalPages = ((newsResponse.totalResults)?.div((Constants.QUERY_PAGE_SIZE)))?.plus(
                             2
@@ -84,6 +94,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
                 is Resource.Error ->{
                     hideshim()
                     hideProgressBar()
+                    searchIllustration.visibility = View.VISIBLE
                     response.message?.let {
                         Toast.makeText(activity,"You have requested too many results. Developer accounts are limited to a max of 100 results.", Toast.LENGTH_LONG).show()
                     }

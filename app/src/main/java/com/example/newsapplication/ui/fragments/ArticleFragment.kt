@@ -18,8 +18,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
     val args: ArticleFragmentArgs by navArgs()
     override fun onStart() {
         super.onStart()
-        (activity as MainActivity).header.visibility = View.GONE
-        (activity as MainActivity).bottomNavigationView.visibility = View.GONE
+        (activity as MainActivity).bottomnavigationgraph.visibility = View.GONE
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

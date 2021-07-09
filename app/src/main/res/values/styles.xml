@@ -21,4 +21,13 @@
         <item name="checkedIconTint">@color/white</item>
     </style>
 
+    <style name="CustomMaterialDialog" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <!-- Background Color-->
+        <item name="android:background">@color/white</item>
+        <!-- Text Color for title and message -->
+        <item name="colorOnSurface">@color/black</item>
+        <!-- Text Color for buttons -->
+        <item name="colorPrimary">@color/red</item>
+    </style>
+
 </resources>

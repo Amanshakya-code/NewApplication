@@ -106,6 +106,10 @@ class NewsViewModel(app:Application,val newsRepository: NewsRepository):AndroidV
     }
     fun getsavedNews() = newsRepository.getSavedNews()
 
+    fun deleteAllArticle() = viewModelScope.launch {
+        newsRepository.DeleteAllArticle()
+    }
+
     fun deleteArticle(article: ArticlesItem) = viewModelScope.launch {
         newsRepository.deleteArticle(article)
     }

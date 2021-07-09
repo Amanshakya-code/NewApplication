@@ -4,39 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 
-    android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="10dp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_search_24"/>
-
-        <EditText
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etSearch"
             android:layout_width="match_parent"
+            android:layout_weight="19"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/text_box_color_2"
+            android:backgroundTint="@color/text_box_color_2"
+            android:drawableStart="@drawable/ic_baseline_search_24"
+            android:drawablePadding="10dp"
+            android:hint="Search for News"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingVertical="10dp"
+            android:paddingStart="20dp"
+            android:textCursorDrawable="@null"
+            android:textSize="18sp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/clearText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Search..." />
-    </LinearLayout>
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="30dp"
+            android:src="@drawable/ic_baseline_close_24"
+            android:visibility="gone"
+            android:layout_gravity="right"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </FrameLayout>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/searchIllustration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/ic_search_illustration" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearchNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_article_preview"
+        android:clipToPadding="false"
         android:paddingBottom="50dp"
-        android:clipToPadding="false" />
+        tools:listitem="@layout/item_article_preview" />
+
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shim"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:shimmer_duration="1000"
+        android:visibility="gone"
         app:shimmer_auto_start="false"
-        android:visibility="gone">
+        app:shimmer_duration="1000">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,8 +83,8 @@
         android:id="@+id/paginationProgressBar"
         style="?attr/progressBarStyle"
         android:layout_width="match_parent"
-        android:layout_gravity="bottom"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:background="@android:color/transparent" />
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        android:visibility="invisible" />
 </LinearLayout>

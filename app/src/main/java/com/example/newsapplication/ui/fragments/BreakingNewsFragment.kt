@@ -40,8 +40,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     val TAG = "BreakingNewsFragment"
     override fun onStart() {
         super.onStart()
-        (activity as MainActivity).header.visibility = View.VISIBLE
-        (activity as MainActivity).bottomNavigationView.visibility = View.VISIBLE
+        (activity as MainActivity).bottomnavigationgraph.visibility = View.VISIBLE
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -54,7 +53,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             }
             findNavController().navigate(R.id.action_breakingNewsFragment_to_articleFragment,bundle)
         }
-        (activity as MainActivity).bottomDrawer.setOnClickListener {
+        bottomdialogsheet.setOnClickListener {
             val dialog = Dialog(requireContext())
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.setContentView(R.layout.bottomsheet)
@@ -90,6 +89,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             }catch (e:Exception){
 
             }
+            dialog.show()
             apply.setOnClickListener {
                 (activity as MainActivity).cleardata()
                 showmainprogressbar()
@@ -99,7 +99,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     viewModel.breakingNewsPage = 1
                     viewModel.getBreakingNews("us")
                     (activity as MainActivity).SaveIntoSharePref("america",america.isChecked,"us","ameri")
-                    Toast.makeText(requireContext(),"America",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"America News Feed",Toast.LENGTH_SHORT).show()
                 }
                 else if(india.isChecked)
                 {
@@ -107,7 +107,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     viewModel.breakingNewsPage = 1
                     viewModel.getBreakingNews("in")
                     (activity as MainActivity).SaveIntoSharePref("india",india.isChecked,"in","ind")
-                    Toast.makeText(requireContext(),"India",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"India News Feed",Toast.LENGTH_SHORT).show()
                 }
                 else if(russia.isChecked)
                 {
@@ -115,7 +115,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     viewModel.breakingNewsPage = 1
                     viewModel.getBreakingNews("ru")
                     (activity as MainActivity).SaveIntoSharePref("russia",russia.isChecked,"ru","rus")
-                    Toast.makeText(requireContext(),"Russia",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Russia News Feed",Toast.LENGTH_SHORT).show()
                 }
                 else if(france.isChecked)
                 {
@@ -123,7 +123,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     viewModel.breakingNewsPage = 1
                     viewModel.getBreakingNews("fr")
                     (activity as MainActivity).SaveIntoSharePref("france",france.isChecked,"fr","fran")
-                    Toast.makeText(requireContext(),"France",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"France News Feed",Toast.LENGTH_SHORT).show()
                 }
                 else if(brazil.isChecked)
                 {
@@ -131,14 +131,14 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     viewModel.breakingNewsPage = 1
                     viewModel.getBreakingNews("br")
                     (activity as MainActivity).SaveIntoSharePref("brazil",brazil.isChecked,"br","braz")
-                    Toast.makeText(requireContext(),"Brazil",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Brazil News Feed",Toast.LENGTH_SHORT).show()
                 }
                 else if(japan.isChecked){
                     viewModel.breakingNewsResponse = null
                     viewModel.breakingNewsPage = 1
                     viewModel.getBreakingNews("jp")
                     (activity as MainActivity).SaveIntoSharePref("japan",japan.isChecked,"jp","jap")
-                    Toast.makeText(requireContext(),"Japan",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Japan News Feed",Toast.LENGTH_SHORT).show()
                 }
                 else if(germany.isChecked)
                 {
@@ -146,7 +146,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     viewModel.breakingNewsPage = 1
                     viewModel.getBreakingNews("de")
                     (activity as MainActivity).SaveIntoSharePref("germany",germany.isChecked,"de","ger")
-                    Toast.makeText(requireContext(),"Germany",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Germany News Feed",Toast.LENGTH_SHORT).show()
                 }
                 else if(canada.isChecked)
                 {
@@ -154,7 +154,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     viewModel.breakingNewsPage = 1
                     viewModel.getBreakingNews("ca")
                     (activity as MainActivity).SaveIntoSharePref("canada",canada.isChecked,"ca","can")
-                    Toast.makeText(requireContext(),"Canada",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"Canada News Feed",Toast.LENGTH_SHORT).show()
                 }
                 else if(southkorea.isChecked)
                 {
@@ -162,14 +162,14 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     viewModel.breakingNewsPage = 1
                     viewModel.getBreakingNews("kr")
                     (activity as MainActivity).SaveIntoSharePref("southkorea",southkorea.isChecked,"kr","korea")
-                    Toast.makeText(requireContext(),"South Korea",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"South Korea News Feed",Toast.LENGTH_SHORT).show()
                 }
                 else
                 {
                     viewModel.breakingNewsResponse = null
                     viewModel.breakingNewsPage = 1
                     viewModel.getBreakingNews("in")
-                    (activity as MainActivity).SaveIntoSharePref("india",india.isChecked,"in","ind")
+                    (activity as MainActivity).SaveIntoSharePref("india News Feed",india.isChecked,"in","ind")
                 }
                 dialog.dismiss()
             }
@@ -182,6 +182,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"business")
+                categorytext.text = "BUSINESS"
                 dialog.dismiss()
             }
             card2.setOnClickListener {
@@ -189,6 +190,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"entertainment")
+                categorytext.text = "ENTERTAINMENT"
                 dialog.dismiss()
             }
             card3.setOnClickListener {
@@ -196,6 +198,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"general")
+                categorytext.text = "GENERAL"
                 dialog.dismiss()
             }
             card4.setOnClickListener {
@@ -203,6 +206,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"health")
+                categorytext.text = "HEALTH"
                 dialog.dismiss()
             }
             card5.setOnClickListener {
@@ -210,6 +214,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"science")
+                categorytext.text = "SCIENCE"
                 dialog.dismiss()
             }
             card6.setOnClickListener {
@@ -217,6 +222,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"sports")
+                categorytext.text = "SPORTS"
                 dialog.dismiss()
             }
             card7.setOnClickListener {
@@ -224,6 +230,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 viewModel.breakingNewsResponse = null
                 viewModel.breakingNewsPage = 1
                 viewModel.getCategoryNews(COUNTRY_CODE,"technology")
+                categorytext.text = "TECHNOLOGY"
                 dialog.dismiss()
             }
             card8.setOnClickListener {
@@ -231,10 +238,11 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 viewModel.breakingNewsResponse = null;
                 viewModel.breakingNewsPage = 1
                 viewModel.getBreakingNews(countryCode = COUNTRY_CODE)
+                categorytext.text = ""
                 dialog.dismiss()
             }
 
-            dialog.show()
+
             dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.window?.attributes?.windowAnimations = R.style.dialogopanimation

@@ -1,12 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSavedNews"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        tools:listitem="@layout/item_article_preview"
-        android:layout_height="match_parent" />
-</FrameLayout>
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/savedImage"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/saved_news"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/deleteAllArticlebtn"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_baseline_delete_outline_24"
+            android:layout_marginTop="10dp"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/savedSearch"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="19"
+            android:background="@color/text_box_color_2"
+            android:backgroundTint="@color/text_box_color_2"
+            android:drawableStart="@drawable/ic_baseline_searchbar"
+            android:drawablePadding="10dp"
+            android:hint="Search for Saved News"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingVertical="10dp"
+            android:paddingStart="20dp"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/cleartextsaved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="30dp"
+            android:src="@drawable/ic_baseline_close_24"
+            android:visibility="gone" />
+
+    </FrameLayout>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/nothavingsavedarticle"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_gravity="top"
+        android:layout_marginBottom="10dp"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        android:src="@drawable/ic_bookmark_illustration" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/nonewsaved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:fontFamily="@font/roboto_medium"
+        android:text="No Saved News"
+        android:textSize="25sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:visibility="gone"
+        android:id="@+id/exploreNews"
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:elevation="5dp"
+        android:fontFamily="@font/roboto_medium"
+        android:letterSpacing="0.08"
+        android:text="Explore News"
+        android:textAllCaps="false"
+        android:textColor="#6c63ff"
+        android:textSize="15sp"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="3dp"
+        app:elevation="5dp"
+        app:strokeColor="#6c63ff"
+        app:strokeWidth="1.5dp" />
+
+    <FrameLayout
+        android:id="@+id/savedprogressfram"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSavedNews"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_article_preview" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loadblacksaved"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/darkback"
+            app:cardElevation="0dp" />
+
+        <ProgressBar
+            android:id="@+id/savedprogressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:indeterminateTint="@color/white"
+            android:visibility="gone" />
+
+    </FrameLayout>
+</LinearLayout>

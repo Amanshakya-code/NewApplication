@@ -1,6 +1,7 @@
 package com.example.newsapplication.db
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import com.example.newsapplication.model.ArticlesItem
 
@@ -14,5 +15,8 @@ interface ArticleDao {
 
     @Delete
     suspend fun deleteArticle(article: ArticlesItem)
+
+    @Query("DELETE FROM articles")
+    suspend fun deleteAllArticle()
 
 }

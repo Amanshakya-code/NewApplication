@@ -1,29 +1,23 @@
 package com.example.newsapplication.ui
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.newsapplication.R
 import com.example.newsapplication.db.ArticleDatabase
 import com.example.newsapplication.repository.NewsRepository
-import com.example.newsapplication.R
-import com.example.newsapplication.settings
+import com.example.newsapplication.ui.fragments.BreakingNewsFragment
+import com.example.newsapplication.ui.fragments.SavedNewsFragment
+import com.example.newsapplication.ui.fragments.SearchNewsFragment
 import com.example.newsapplication.util.Constants.Companion.COUNTRY_CODE
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_settings.*
-import kotlinx.android.synthetic.main.alert_dialog.*
-import kotlinx.android.synthetic.main.fragment_breaking_news.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -89,35 +83,16 @@ class MainActivity : AppCompatActivity() {
         val newsrepository = NewsRepository(ArticleDatabase(this))
         val viewModelProviderFactory = NewsViewModelProviderFactory(application,newsrepository)
         viewModel = ViewModelProvider(this,viewModelProviderFactory).get(NewsViewModel::class.java)
-        bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
+        val breakingnews = BreakingNewsFragment()
+        val savenew = SavedNewsFragment()
+        val searchnews = SearchNewsFragment()
+
+       bottomnavigationgraph.setupWithNavController(newsNavHostFragment.findNavController())
+
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.setting,menu)
-        return true
-    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
-            R.id.settings -> {
-                startActivity(Intent(this,settings::class.java))
-                return true
-            }
-            R.id.Info ->{
-                val inflater = LayoutInflater.from(this)
-                val view = inflater.inflate(R.layout.alert_dialog,null)
-                val alertDialog = AlertDialog.Builder(this)
-                    .setView(view)
-                    .setCancelable(true)
-                    .setPositiveButton("Thanks for using this App"){dialogInterface,which->
-                    }
-                    .create()
-                alertDialog.show()
-                return true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+
     private fun update(key:String): String? {
         val sp = getSharedPreferences("mypref", Context.MODE_PRIVATE)
         return sp.getString(key,"invalid")
@@ -142,3 +117,4 @@ class MainActivity : AppCompatActivity() {
         editor.commit()
     }
 }
+
