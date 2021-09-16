@@ -45,27 +45,27 @@
             android:orientation="vertical"
             android:padding="10dp"
             android:layout_gravity="bottom">
-                <LinearLayout
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom">
+                <TextView
+                    android:id="@+id/tvSource"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="SOURCE"
+                    android:textColor="@android:color/white" />
+                <TextView
+                    android:id="@+id/tvPublishedAt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="bottom">
-                    <TextView
-                        android:id="@+id/tvSource"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp"
-                        android:text="SOURCE"
-                        android:textColor="@android:color/white" />
-                    <TextView
-                        android:id="@+id/tvPublishedAt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp"
-                        android:text="PUBLISHED AT"
-                        android:gravity="right"
-                        android:textColor="@android:color/white"/>
-                </LinearLayout>
+                    android:textSize="15dp"
+                    android:text="PUBLISHED AT"
+                    android:gravity="right"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
             <TextView
                 android:id="@+id/tvDescription"
                 android:layout_width="wrap_content"

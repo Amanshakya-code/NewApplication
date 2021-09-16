@@ -8,20 +8,19 @@
     <application
         android:name=".NewsApplication"
         android:allowBackup="true"
-        android:icon="@drawable/iconimage"
+        android:icon="@drawable/business"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.SpashScreen"
-            android:screenOrientation="portrait">
+        <activity android:name=".ui.SpashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MainActivity" android:screenOrientation="portrait">
+        <activity android:name=".ui.MainActivity">
 
         </activity>
 

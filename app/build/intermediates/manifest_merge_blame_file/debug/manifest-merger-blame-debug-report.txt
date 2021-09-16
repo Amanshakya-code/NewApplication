@@ -1,0 +1,77 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.newsapplication"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+8-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+11-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:5:5-79
+11-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:5:22-76
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:6:5-67
+12-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:6:22-64
+13
+14    <application
+14-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:8:5-30:19
+15        android:name="com.example.newsapplication.NewsApplication"
+15-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:9:9-40
+16        android:allowBackup="true"
+16-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:10:9-35
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.5.0] C:\Users\AMAN\.gradle\caches\transforms-2\files-2.1\9f710384f7ba22a24cec1f17b43fb43f\core-1.5.0\AndroidManifest.xml:24:18-86
+18        android:debuggable="true"
+19        android:extractNativeLibs="false"
+20        android:icon="@drawable/business"
+20-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:11:9-42
+21        android:label="@string/app_name"
+21-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:12:9-41
+22        android:roundIcon="@mipmap/ic_launcher_round"
+22-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:13:9-54
+23        android:supportsRtl="true"
+23-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:14:9-35
+24        android:testOnly="true"
+25        android:theme="@style/AppTheme" >
+25-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:15:9-40
+26        <activity android:name="com.example.newsapplication.ui.SpashScreen" >
+26-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:16:9-22:20
+26-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:16:19-49
+27            <intent-filter>
+27-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:17:13-21:29
+28                <action android:name="android.intent.action.MAIN" />
+28-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:18:17-69
+28-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:18:25-66
+29
+30                <category android:name="android.intent.category.LAUNCHER" />
+30-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:20:17-77
+30-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:20:27-74
+31            </intent-filter>
+32        </activity>
+33        <activity android:name="com.example.newsapplication.ui.MainActivity" >
+33-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:23:9-25:20
+33-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:23:19-50
+34        </activity>
+35
+36        <meta-data
+36-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:27:9-29:57
+37            android:name="preloaded_fonts"
+37-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:28:13-43
+38            android:resource="@array/preloaded_fonts" />
+38-->C:\Users\AMAN\AndroidStudioProjects\NewsApplication\app\src\main\AndroidManifest.xml:29:13-54
+39
+40        <service
+40-->[androidx.room:room-runtime:2.2.5] C:\Users\AMAN\.gradle\caches\transforms-2\files-2.1\67e33cdf40d08481ed77fcc512b3ec1e\room-runtime-2.2.5\AndroidManifest.xml:25:9-28:40
+41            android:name="androidx.room.MultiInstanceInvalidationService"
+41-->[androidx.room:room-runtime:2.2.5] C:\Users\AMAN\.gradle\caches\transforms-2\files-2.1\67e33cdf40d08481ed77fcc512b3ec1e\room-runtime-2.2.5\AndroidManifest.xml:26:13-74
+42            android:directBootAware="true"
+42-->[androidx.room:room-runtime:2.2.5] C:\Users\AMAN\.gradle\caches\transforms-2\files-2.1\67e33cdf40d08481ed77fcc512b3ec1e\room-runtime-2.2.5\AndroidManifest.xml:27:13-43
+43            android:exported="false" />
+43-->[androidx.room:room-runtime:2.2.5] C:\Users\AMAN\.gradle\caches\transforms-2\files-2.1\67e33cdf40d08481ed77fcc512b3ec1e\room-runtime-2.2.5\AndroidManifest.xml:28:13-37
+44    </application>
+45
+46</manifest>

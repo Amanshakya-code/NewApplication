@@ -2,9 +2,9 @@ package com.example.newsapplication.db
 
 import android.content.Context
 import androidx.room.*
-import com.example.newsapplication.model.ArticlesItem
+import com.example.newsapplication.model.ArticleItem
 
-@Database(entities = [ArticlesItem::class],version = 2,exportSchema = false)
+@Database(entities = [ArticleItem::class],version = 3,exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class ArticleDatabase : RoomDatabase(){
     abstract fun getArticleDao(): ArticleDao

@@ -1,0 +1,14 @@
+com/example/newsapplication/db/ArticleDatabase_Impl.java
+ com.example.newsapplication.db.ArticleDatabase_Impl
+ com.example.newsapplication.db.ArticleDatabase_Impl$1
+com/example/newsapplication/db/ArticleDao_Impl.java
+ com.example.newsapplication.db.ArticleDao_Impl
+ com.example.newsapplication.db.ArticleDao_Impl$1
+ com.example.newsapplication.db.ArticleDao_Impl$2
+ com.example.newsapplication.db.ArticleDao_Impl$3
+ com.example.newsapplication.db.ArticleDao_Impl$4
+ com.example.newsapplication.db.ArticleDao_Impl$5
+ com.example.newsapplication.db.ArticleDao_Impl$6
+ com.example.newsapplication.db.ArticleDao_Impl$7
+com/example/newsapplication/BuildConfig.java
+ com.example.newsapplication.BuildConfig

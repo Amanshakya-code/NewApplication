@@ -1,0 +1,7 @@
+#Thu Sep 16 14:23:45 IST 2021
+base.1=C\:\\Users\\AMAN\\AndroidStudioProjects\\NewsApplication\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
+path.1=classes.dex
+base.0=C\:\\Users\\AMAN\\AndroidStudioProjects\\NewsApplication\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex

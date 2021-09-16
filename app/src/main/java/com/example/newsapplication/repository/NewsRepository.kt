@@ -2,7 +2,7 @@ package com.example.newsapplication.repository
 
 import com.example.newsapplication.api.RetrofitInstance
 import com.example.newsapplication.db.ArticleDatabase
-import com.example.newsapplication.model.ArticlesItem
+import com.example.newsapplication.model.ArticleItem
 
 class NewsRepository(
     val db: ArticleDatabase
@@ -13,11 +13,11 @@ class NewsRepository(
     suspend fun searchNews(searchQuery:String,pageNumber: Int)=
         RetrofitInstance.api.searchForNews(searchQuery,pageNumber)
 
-    suspend fun upsert(article: ArticlesItem) = db.getArticleDao().upsert(article)
+    suspend fun upsert(article: ArticleItem) = db.getArticleDao().upsert(article)
 
     fun getSavedNews() = db.getArticleDao().getAllArticles()
 
-    suspend fun deleteArticle(article: ArticlesItem) = db.getArticleDao().deleteArticle(article)
+    suspend fun deleteArticle(article: ArticleItem) = db.getArticleDao().deleteArticle(article)
 
     suspend fun getCategoryNews(countryCode: String,category:String,pageNumber:Int) =
         RetrofitInstance.api.getCategoryNews(countryCode,category,pageNumber)

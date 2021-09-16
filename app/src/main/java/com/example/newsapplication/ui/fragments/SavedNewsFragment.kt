@@ -3,7 +3,6 @@ package com.example.newsapplication.ui.fragments
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
-import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -12,9 +11,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapplication.R
-import com.example.newsapplication.adapters.NewsAdapter
 import com.example.newsapplication.adapters.SavedAdapter
-import com.example.newsapplication.model.ArticlesItem
+import com.example.newsapplication.model.ArticleItem
 import com.example.newsapplication.ui.MainActivity
 import com.example.newsapplication.ui.NewsViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -32,8 +30,8 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
 
     lateinit var viewModel: NewsViewModel
     lateinit var savedAdapter: SavedAdapter
-    lateinit var savedarticleList:ArrayList<ArticlesItem>
-    lateinit var tempsavedList:ArrayList<ArticlesItem>
+    lateinit var savedarticleList:ArrayList<ArticleItem>
+    lateinit var tempsavedList:ArrayList<ArticleItem>
     var job: Job? = null
     override fun onStart() {
         super.onStart()

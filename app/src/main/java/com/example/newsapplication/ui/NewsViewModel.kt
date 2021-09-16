@@ -7,12 +7,11 @@ import android.net.ConnectivityManager.*
 import android.net.NetworkCapabilities.*
 import android.os.Build
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.newsapplication.NewsApplication
-import com.example.newsapplication.model.ArticlesItem
+import com.example.newsapplication.model.ArticleItem
 import com.example.newsapplication.model.NewsResponse
 import com.example.newsapplication.repository.NewsRepository
 import com.example.newsapplication.util.Constants.Companion.COUNTRY_CODE
@@ -101,7 +100,7 @@ class NewsViewModel(app:Application,val newsRepository: NewsRepository):AndroidV
         return Resource.Error(response.message())
     }
 
-    fun saveArticle(article: ArticlesItem) = viewModelScope.launch {
+    fun saveArticle(article: ArticleItem) = viewModelScope.launch {
         newsRepository.upsert(article)
     }
     fun getsavedNews() = newsRepository.getSavedNews()
@@ -110,7 +109,7 @@ class NewsViewModel(app:Application,val newsRepository: NewsRepository):AndroidV
         newsRepository.DeleteAllArticle()
     }
 
-    fun deleteArticle(article: ArticlesItem) = viewModelScope.launch {
+    fun deleteArticle(article: ArticleItem) = viewModelScope.launch {
         newsRepository.deleteArticle(article)
     }
 

@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
         val savenew = SavedNewsFragment()
         val searchnews = SearchNewsFragment()
 
-       bottomnavigationgraph.setupWithNavController(newsNavHostFragment.findNavController())
+        bottomnavigationgraph.setupWithNavController(newsNavHostFragment.findNavController())
 
     }
 
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         val sp = getSharedPreferences("mypref", Context.MODE_PRIVATE)
         return sp.getString(key,"invalid")
     }
-     fun SaveIntoSharePref(key:String,value:Boolean,code:String,codeKey:String){
+    fun SaveIntoSharePref(key:String,value:Boolean,code:String,codeKey:String){
         val sharedPreferences = getSharedPreferences("mypref",Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.apply{
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
             apply()
         }
     }
-     fun updatechip(key:String):Boolean{
+    fun updatechip(key:String):Boolean{
         val sp = getSharedPreferences("mypref",Context.MODE_PRIVATE)
         return sp.getBoolean(key,false)
     }
@@ -117,4 +117,3 @@ class MainActivity : AppCompatActivity() {
         editor.commit()
     }
 }
-

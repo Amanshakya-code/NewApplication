@@ -10,21 +10,21 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-import com.example.newsapplication.model.ArticlesItem
 import com.bumptech.glide.Glide
 import com.example.newsapplication.R
+import com.example.newsapplication.model.ArticleItem
 import kotlinx.android.synthetic.main.item_article_preview.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class NewsAdapter:RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     inner class ArticleViewHolder(itemView: View):RecyclerView.ViewHolder(itemView)
-    private val differCallback = object : DiffUtil.ItemCallback<ArticlesItem>(){
-        override fun areItemsTheSame(oldItem: ArticlesItem, newItem: ArticlesItem): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<ArticleItem>(){
+        override fun areItemsTheSame(oldItem: ArticleItem, newItem: ArticleItem): Boolean {
             return oldItem.url == newItem.url // why we haven use id to compare bcz in getting data from api we dont have any id associated to it but there is always unique url
         }
 
-        override fun areContentsTheSame(oldItem: ArticlesItem, newItem: ArticlesItem): Boolean {
+        override fun areContentsTheSame(oldItem: ArticleItem, newItem: ArticleItem): Boolean {
             return oldItem == newItem
         }
     }
@@ -58,9 +58,9 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         }
     }
 
-    private var onItemClickListener: ((ArticlesItem) -> Unit)?=null
+    private var onItemClickListener: ((ArticleItem) -> Unit)?=null
 
-    fun setOnItemClickListener(listener:(ArticlesItem)->Unit){
+    fun setOnItemClickListener(listener:(ArticleItem)->Unit){
         onItemClickListener = listener
     }
 
